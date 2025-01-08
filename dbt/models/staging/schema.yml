@@ -1,0 +1,130 @@
+version: 2
+
+models:
+  - name: stg_sales
+    description: "Sales data for a retailer."
+  - name: stg_hierarchy
+    description: "Product hierarchy and meta data."
+  - name: stg_stores
+    description: "Store meta-data data."
+
+  - name: meta_data
+    description: > 
+      Meta data for the items. Items are aggregated at a product by store level.
+      E.g. 'P0001-S0002', where P0001 is the product id and S0002 is the store id.
+    columns:
+      - name: item_id
+        description: > 
+          The unique (integer) identifier for the item. The id must not change
+          between multiple runs where new data is added.
+      - name: item_name
+        description: >
+          The unique name of the item. Aggregation should be on a product by store
+          level. E.g. 'P0001-S0002'. The name must not change between multiple
+          runs where new data is added.
+      - name: product_length
+        description: >
+          The length of the product.
+  - name: target_time_series
+    description: > 
+      Target time series data for the items. Targets are the aggregated sales
+      per item per week.
+    columns:
+      - name: item_id
+        description: > 
+          The unique identifier for the item. The id must not change between
+          multiple runs where new data is added.
+      - name: date
+        description: >
+          The date of the sale (YYYY-MM-DD). Aggregated to a weekly resolution.
+      - name: target
+        description: The aggregated sales for the week.
+  - name: per_item_covariates
+    description: > 
+      Per item covariates. These are covariates that are specific to the item.
+    columns:
+      - name: item_id
+        description: > 
+          The unique identifier for the item. The id must not change between
+          multiple runs where new data is added.
+      - name: date
+        description: >
+          The date of the sale (YYYY-MM-DD). Aggregated to a weekly resolution.
+      - name: stock
+        description: > 
+          The aggregated stock level of the item.
+
+sources:
+  - name: retail
+    schema: main
+    tables:
+      - name: sales
+        columns:
+          - name: product_id
+            description: "The unique identifier for the product."
+          - name: store_id
+            description: "The unique identifier for the store."
+          - name: date
+            description: "The date of the sale (YYYY-MM-DD)."
+          - name: sales
+            description: "The number of items sold."
+          - name: revenue
+            description: "Daily total sales revenue."
+          - name: stock
+            description: "End-of-day stock quantity."
+          - name: price
+            description: "Product price."
+          - name: promo_type_1
+            description: "Type of promotion applied on channel 1"
+          - name: promo_bin_1
+            description: "Binned promotion rate for applied promo_type_1"
+          - name: promo_type_2
+            description: "Type of promotion applied on channel 2"
+          - name: promo_bin_2
+            description: "Binned promotion rate for applied promo_type_2"
+          - name: promo_discount_2
+            description: "Discount rate for applied promo type 2"
+          - name: promo_discount_type_2 
+            description: "Type of discount applied"
+      - name: product_hierarchy
+        columns:
+          - name: product_id
+            description: "The unique identifier for the product."
+          - name: product_length
+            description: "The length of the product."
+          - name: product_width
+            description: "The width of the product."
+          - name: product_depth
+            description: "The depth of the product."
+          - name: cluster_id
+            description: "Cluster of products based on sales."
+          - name: hierarchy1_id
+            description: > 
+              Barcode hierarchy of Product. The most general hierarchy. 
+              For Example: Foods and Beverages
+          - name: hierarchy2_id
+            description: >
+              Barcode hierarchy of Product. This is second level. 
+              For Example: Beverages
+          - name: hierarchy3_id
+            description: >
+              Barcode hierarchy of Product. This is third level. 
+              For Example: Cola
+          - name: hierarchy4_id
+            description: >
+              Barcode hierarchy of Product. This is fourth level. 
+              For Example: Pepsi Cola without sugar.
+          - name: hierarchy5_id
+            description: >
+              Barcode hierarchy of Product. This is fifth level. 
+              For Example: Pepsi Cola without sugar, 1L
+      - name: store_cities
+        columns:
+          - name: store_id
+            description: "The unique identifier for the store."
+          - name: storetype_id
+            description: "Type of store"
+          - name: store_size
+            description: "Size of store"
+          - name: city_id
+            description: "City where the store is located"

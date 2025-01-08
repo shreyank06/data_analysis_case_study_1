@@ -1,0 +1,34 @@
+### Business Insights ###
+
+For Business Stakeholders
+
+
+1. Number of sales have a direct influence on revenue
+
+2. Higher stock levels might be associated with lower revenue. The reason could be higher stock levels may indicate an oversupply of less-demanded products, 
+while high-demand products may be understocked, leading to lower revenue despite high overall stock levels.
+
+
+3. Higher promo rates 1 significantly reduce stock levels. likely by driving demand for the promoted products. 
+Showing promotional activities contribute to more sales.
+
+4. Promo rates 2 had relatively less positive impact on revenue compared to promo rates 1.
+
+5. Sudden sales and revenue dip 2019 Q4. Most demanded product was not in stock for Q4 in 2019. 
+Or the demand might have reduced.
+
+6. Incerase promo rates(both 1 and 2) lead to high revenue
+
+7. There is a dip in sales and revenue in 2019 Q4. This could be due to most demanded product was not in stock or not in demand anymore
+
+
+### Insights for Data Scientists and Engineers ###
+Target vs. Revenue: "There is a moderate positive correlation (~0.41) between sales (target) and revenue
+Revenue vs. Stock: Moderate negative correlation (~-0.41),
+Stock vs. Promo Rate 1: Strong negative correlation (~-0.53)
+Promo Rate 1 vs. Revenue: Moderate positive correlation (~0.38)
+Promo Rate 2: Weak correlations with other variables, indicating limited influence.
+Sales Stability: Quarterly sales are consistently above 600,000, showing stable demand, except for a dip in Q4 2019.
+
+1. Find out and validate if there is any particular product(s) which is in high demand but not in enough stocks leading to low revenue despite higher stock levels.
+2. Validate whether the Q4 2019 sales dip was caused by the unavailability of high-demand products.

@@ -1,0 +1,7 @@
+analysis_challenge:
+  outputs:
+    default:
+      type: duckdb
+      path: '../data/retail_sales.duckdb'
+      schema: dbt
+      threads: 4
