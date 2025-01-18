@@ -1,5 +1,5 @@
 ### Models
-Models used for data preprocessing, analyzing and forecasting are in models folder. There are 4 models developed namely 'meta_data.sql, per_item_covariates.sql, target_time_series.sql' and 'data_for_forecasting.sql.'
+This repository showcases a **data science case study** focused on data analysis and visualization. It includes comprehensive **ETL processes,** **data cleaning,** exploratory **data analysis** (EDA), and** insights generation**. Designed for business and analytical applications, it employs Python tools like Pandas, NumPy, and Matplotlib, offering a structured approach to solving real-world analytical problems.
 
 Steps to execute models
 ```
